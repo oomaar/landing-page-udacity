@@ -110,4 +110,10 @@ for (const link of navLinks) {
             behavior: "smooth"
         });
     })
-}
+};
+
+// Responsive Navbar
+const navButton = document.getElementById("burger");
+navButton.addEventListener("click", () => {
+    navUnorderdList.classList.toggle("toggle-show");
+});

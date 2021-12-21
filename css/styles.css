@@ -236,3 +236,33 @@ section.your-active-class .landing__container::after {
     transform: rotate(360deg) translate(-1em) rotate(-360deg);
   }
 }
+
+#burger {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .mobile__nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .toggle-show {
+    display: none;
+  }
+
+  #burger {
+    display: block;
+    cursor: pointer;
+  }
+
+  .bar {
+    margin: 0.4rem 1rem 0.4rem auto;
+    height: 6px;
+    width: 30px;
+    border-radius: 1rem;
+    background: #000;
+  }
+}
