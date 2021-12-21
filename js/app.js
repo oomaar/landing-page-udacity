@@ -23,9 +23,6 @@
  * 
 */
 // const pageSections = document.querySelectorAll('section');
-const navFragment = document.createDocumentFragment();
-const pageSections = document.querySelectorAll('section');
-const navUnorderdList = document.getElementById('navbar__list');
 
 /**
  * End Global Variables
@@ -42,6 +39,30 @@ const navUnorderdList = document.getElementById('navbar__list');
 */
 
 // build the nav
+
+// Add class 'active' to section when near top of viewport
+
+// Scroll to anchor ID using scrollTO event
+
+/**
+ * End Main Functions
+ * Begin Events
+ *
+*/
+
+// Build menu
+
+// Scroll to section on link click
+
+// Set sections as active
+
+// Global
+const navFragment = document.createDocumentFragment();
+const pageSections = document.querySelectorAll('section');
+const navUnorderdList = document.getElementById('navbar__list');
+const navLinks = document.getElementsByTagName("a");
+
+// Navbar Build
 for (const section of pageSections) {
     // define navItem -> 'li' & navItemLink -> 'a'
     const navItem = document.createElement('li');
@@ -58,7 +79,7 @@ for (const section of pageSections) {
     navUnorderdList.append(navFragment);
 };
 
-// Add class 'active' to section when near top of viewport
+// Active Class
 document.addEventListener('scroll', () => {
     for (const section of pageSections) {
         const rect = section.getBoundingClientRect();
@@ -80,19 +101,13 @@ document.addEventListener('scroll', () => {
     };
 });
 
-// Scroll to anchor ID using scrollTO event
-
-
-/**
- * End Main Functions
- * Begin Events
- *
-*/
-
-// Build menu
-
-// Scroll to section on link click
-
-// Set sections as active
-
-
+// Smooth Scroll
+for (const link of navLinks) {
+    link.addEventListener("click", e => {
+        e.preventDefault();
+        const singleLink = e.target.getAttribute("href").substring(1);
+        document.getElementById(`${singleLink}`).scrollIntoView({
+            behavior: "smooth"
+        });
+    })
+}

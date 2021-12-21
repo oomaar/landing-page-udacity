@@ -3,6 +3,7 @@ I divided this project into 5 main points to make it happen.
 
 1- Dynamic Navbar.
 2- Highlight Viewd Section & NavLink using .getBoundingClientRect().
+3- When a link is clicked, the page scrolls to the targeted section smoothly.
 
 This project is done with the help of Udacity webinar, MDN Docs and some of my previously self learned skills.
 
