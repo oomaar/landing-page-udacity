@@ -9,6 +9,10 @@
 */
 
 /* ---- Base Rules ---- */
+/* html {
+  scroll-behavior: smooth;
+} */
+
 body {
   background: rgb(136, 203, 171);
   background: linear-gradient(
@@ -69,6 +73,7 @@ section {
   padding-left: 0;
   margin: 0;
   text-align: right;
+  background: rgb(0, 0, 0);
 }
 
 .navbar__menu li {
@@ -80,7 +85,7 @@ section {
   padding: 1em;
   font-weight: bold;
   text-decoration: none;
-  color: #000;
+  color: #eee;
 }
 
 .navbar__menu .menu__link:hover {
@@ -90,8 +95,48 @@ section {
 }
 
 .navbar__menu .menu__link__active {
-  background: #cc1;
+  background: #fff;
+  color: #000;
+  /* border-radius: 1rem; */
 }
+
+/* Start of Responsive Navbar */
+#burger {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .mobile__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .toggle-show {
+    display: none;
+  }
+
+  #burger {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 0;
+    left: 0;
+    transition: all 0.5s ease-in;
+    z-index: 1000;
+  }
+
+  .bar {
+    margin: 0.45rem 1rem 0.45rem auto;
+    height: 4px;
+    width: 32px;
+    border-radius: 1rem;
+    background: #fff;
+  }
+}
+/* End of Responsive Navbar */
 
 /* Header Styles */
 .page__header {
@@ -209,12 +254,13 @@ section:nth-of-type(3n + 1) .landing__container::after {
 /* Section Active Styles */
 /* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
 section.your-active-class {
-  background: rgb(255, 0, 0);
+  background: rgb(0, 0, 0);
   background: linear-gradient(
     0deg,
     rgba(255, 0, 0, 0.1) 0%,
-    rgba(255, 0, 0, 0) 100%
+    rgba(0, 0, 0, 0.5) 100%
   );
+  border-radius: 1rem;
 }
 
 section.your-active-class .landing__container::before {
@@ -237,32 +283,22 @@ section.your-active-class .landing__container::after {
   }
 }
 
-#burger {
+/* Scroll to top button */
+.scroll-top {
+  background-color: #fff;
   display: none;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 1rem;
+  position: fixed;
+  bottom: 1.5rem;
+  right: 5rem;
 }
 
-@media screen and (max-width: 768px) {
-  .mobile__nav {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .toggle-show {
-    display: none;
-  }
-
-  #burger {
-    display: block;
-    cursor: pointer;
-  }
-
-  .bar {
-    margin: 0.4rem 1rem 0.4rem auto;
-    height: 6px;
-    width: 30px;
-    border-radius: 1rem;
-    background: #000;
-  }
+.scroll-top-link {
+  font-size: 2rem;
+  text-decoration: none;
+  color: #000;
 }
