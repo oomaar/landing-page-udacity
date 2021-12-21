@@ -2,6 +2,7 @@
 I divided this project into 5 main points to make it happen.
 
 1- Dynamic Navbar.
+2- Highlight Viewd Section & NavLink using .getBoundingClientRect().
 
 This project is done with the help of Udacity webinar, MDN Docs and some of my previously self learned skills.
 

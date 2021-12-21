@@ -27,7 +27,6 @@ const navFragment = document.createDocumentFragment();
 const pageSections = document.querySelectorAll('section');
 const navUnorderdList = document.getElementById('navbar__list');
 
-
 /**
  * End Global Variables
  * Start Helper Functions
@@ -57,10 +56,29 @@ for (const section of pageSections) {
     navItem.appendChild(navItemLink);
     navFragment.appendChild(navItem);
     navUnorderdList.append(navFragment);
-}
+};
 
 // Add class 'active' to section when near top of viewport
+document.addEventListener('scroll', () => {
+    for (const section of pageSections) {
+        const rect = section.getBoundingClientRect();
+        const allNavLinks = document.querySelectorAll(`[href="#${section.id}"]`);
 
+        for (const link of allNavLinks) {
+            (rect.top >= 0 && rect.top < 500) ? (
+                `
+                ${section.classList.add("your-active-class")}
+                ${link.classList.add("menu__link__active")}
+                `
+            ) : (
+                `
+                ${section.classList.remove("your-active-class")}
+                ${link.classList.remove("menu__link__active")}
+                `
+            );
+        };
+    };
+});
 
 // Scroll to anchor ID using scrollTO event
 
@@ -71,7 +89,7 @@ for (const section of pageSections) {
  *
 */
 
-// Build menu 
+// Build menu
 
 // Scroll to section on link click
 
