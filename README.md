@@ -25,6 +25,6 @@ Basically it's a Multi-section landing page, with:-
 5. The scroll to top link is added by adding a div in the HTML file containg a link with an arrow up as a text,
 making the div look pretty using some minimal CSS lines & adds a smooth scroll to top behavior when clicking on the link in the JS file (The link is only visable when the user scrolls a little bit from the top of the screen and this is done in the JS file by using the onScroll Method and window.pageYOffset).
 
-<img src="/img/1.jpg" width=150>
-<img src="/img/2.jpg" width=150>
-<img src="/img/3.jpg" width=150>
+<img src="/img/1.jpg" width=550>
+<img src="/img/2.jpg" width=550>
+<img src="/img/3.jpg" width=550>
