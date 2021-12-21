@@ -22,12 +22,16 @@
  * Define Global Variables
  * 
 */
+// const pageSections = document.querySelectorAll('section');
+const navFragment = document.createDocumentFragment();
+const pageSections = document.querySelectorAll('section');
+const navUnorderdList = document.getElementById('navbar__list');
 
 
 /**
  * End Global Variables
  * Start Helper Functions
- * 
+ *
 */
 
 
@@ -35,11 +39,25 @@
 /**
  * End Helper Functions
  * Begin Main Functions
- * 
+ *
 */
 
 // build the nav
+for (const section of pageSections) {
+    // define navItem -> 'li' & navItemLink -> 'a'
+    const navItem = document.createElement('li');
+    const navItemLink = document.createElement('a');
 
+    // Add menu__link class, set the link's text & set the href attribute dynamicly
+    navItemLink.classList.add('menu__link');
+    navItemLink.innerText = `${section.dataset.nav}`;
+    navItemLink.setAttribute("href", `#${section.id}`);
+
+    // Build the nav
+    navItem.appendChild(navItemLink);
+    navFragment.appendChild(navItem);
+    navUnorderdList.append(navFragment);
+}
 
 // Add class 'active' to section when near top of viewport
 
@@ -50,7 +68,7 @@
 /**
  * End Main Functions
  * Begin Events
- * 
+ *
 */
 
 // Build menu 
