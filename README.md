@@ -1,20 +1,30 @@
-# Landing Page Project
-I divided this project into 5 main points to make it happen.
+# Project Description
 
-1- Dynamic Navbar.
-2- Highlight Viewd Section & NavLink using .getBoundingClientRect().
-3- When a link is clicked, the page scrolls to the targeted section smoothly.
+This is the first project in the Udacity course, Web Development Professional Track.
 
-This project is done with the help of Udacity webinar, MDN Docs and some of my previously self learned skills.
+Basically it's a Multi-section landing page, with:-
 
-## Table of Contents
+<ol>
+<li> A dynamically updating navigational menu.</li>
+<li> Sections are Highlighted while scrolling through the page, as well as the NavLinks.</li>
+<li>When clicking a link from the navigation menu, the link scrolls to the appropriate section in a light smooth way.</li>
+<li> The layout of the landing page is Responsive across all devices.</li>
+<li>The scroll to top button is only visible when the user scrolls below the fold of the page and has smooth scroll functionality.</li>
+</ol>
 
-* [Instructions](#instructions)
+# Made Possible by the following
 
-## Instructions
+1. The first function (buildTheNav) in the JS file generates the navlinks dynamically, each section added to the page, the link generates automatic.
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+2. The Second function (activeClass) in the JS file defines the position of each section using the JS Method (getBoundingClientRect()), defines every section's id and finally checks for the condition were only the clicked section is active (by adding the `your-active-class` to the section's class list) and removes the active class from all other sections & also highlights the clicked link in the navbar by adding the (menu__link__active) class to the link's classList.
 
-To get started, open `js/app.js` and start building out the app's functionality
+3. The (smoothScroll) function in the JS file adds an eventListner to the activelink, listens to a click event and processing a callback function that defines the sectionID and making a smooth scroll behavior happen by using scrollIntoView.
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+4. The navigation bar is responsive across all the devices, by adding a media query case in the CSS file hides the navbar, make a burger button visable. Thats the first part, the second part is in the JS file, An eventListner is added to the burger button listening to a click, toggle a class to display the navbar horizontaly or make the navbar disappear.
+
+5. The scroll to top link is added by adding a div in the HTML file containg a link with an arrow up as a text,
+making the div look pretty using some minimal CSS lines & adds a smooth scroll to top behavior when clicking on the link in the JS file (The link is only visable when the user scrolls a little bit from the top of the screen and this is done in the JS file by using the onScroll Method and window.pageYOffset).
+
+<img src="/img/1.jpg" width=150>
+<img src="/img/2.jpg" width=150>
+<img src="/img/3.jpg" width=150>
