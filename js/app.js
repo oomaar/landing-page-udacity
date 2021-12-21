@@ -130,3 +130,23 @@ smoothScroll();
 // Build menu
 // Responsive Navbar
 navButton.addEventListener("click", () => navUnorderdList.classList.toggle("toggle-show"));
+
+
+// Extras
+
+// scroll to top button
+const scrollTopDiv = document.querySelector(".scroll-top");
+const scrollTopLink = document.querySelector(".scroll-top-link");
+
+window.onscroll = () => {
+    if (window.pageYOffset > 300) {
+        scrollTopDiv.style.display = "flex";
+    } else {
+        scrollTopDiv.style.display = "none";
+    };
+};
+
+scrollTopLink.addEventListener("click", e => {
+    e.preventDefault();
+    document.querySelector(".main__hero").scrollIntoView({ behavior: "smooth", block: "center" });
+});
