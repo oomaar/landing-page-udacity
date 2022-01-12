@@ -302,3 +302,21 @@ section.your-active-class .landing__container::after {
   text-decoration: none;
   color: #000;
 }
+
+@media screen and (max-width: 768px) {
+  .scroll-top {
+    right: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .scroll-top {
+    right: 1rem;
+    width: 35px;
+    height: 35px;
+  }
+
+  .scroll-top-link {
+    font-size: 1.7rem;
+  }
+}
