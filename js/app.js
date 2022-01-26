@@ -83,6 +83,7 @@ window.addEventListener("scroll", () => {
 */
 
 // Build menu
+document.getElementById("burger").addEventListener("click", () => document.getElementById("navbar__list").classList.toggle("toggle-show"));
 
 // Scroll to section on link click
 
