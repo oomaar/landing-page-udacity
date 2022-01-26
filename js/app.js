@@ -24,6 +24,7 @@
 */
 const sections = document.getElementsByTagName("section");
 const fragment = document.createDocumentFragment();
+const links = document.getElementsByTagName("a");
 
 /**
  * End Global Variables
@@ -67,7 +68,13 @@ window.addEventListener("scroll", () => {
 });
 
 // Scroll to anchor ID using scrollTO event
-
+[...links].map(link => {
+    link.addEventListener("click", e => {
+        e.preventDefault();
+        const sectionId = e.target.getAttribute("href").slice(1, e.target.getAttribute("href").length);
+        document.getElementById(sectionId).scrollIntoView({ behavior: "smooth" });
+    });
+});
 
 /**
  * End Main Functions
