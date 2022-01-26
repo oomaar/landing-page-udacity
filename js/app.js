@@ -32,6 +32,26 @@ const links = document.getElementsByTagName("a");
  *
 */
 
+const activeFunction = () => {
+    const viewport = element => {
+        let bounding = element.getBoundingClientRect();
+        return (
+            bounding.top >= 0 &&
+            bounding.left >= 0 &&
+            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    };
+
+    [...sections].map(section => viewport(section) ? section.classList.add("your-active-class") : section.classList.remove("your-active-class"));
+};
+
+const scrollToFunction = e => {
+    e.preventDefault();
+    const sectionId = e.target.getAttribute("href").slice(1, e.target.getAttribute("href").length);
+    document.getElementById(sectionId).scrollIntoView({ behavior: "smooth" });
+};
+
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -53,28 +73,10 @@ const links = document.getElementsByTagName("a");
 });
 
 // Add class 'active' to section when near top of viewport
-window.addEventListener("scroll", () => {
-    const viewport = element => {
-        let bounding = element.getBoundingClientRect();
-        return (
-            bounding.top >= 0 &&
-            bounding.left >= 0 &&
-            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    };
-
-    [...sections].map(section => viewport(section) ? section.classList.add("your-active-class") : section.classList.remove("your-active-class"));
-});
+window.addEventListener("scroll", activeFunction);
 
 // Scroll to anchor ID using scrollTO event
-[...links].map(link => {
-    link.addEventListener("click", e => {
-        e.preventDefault();
-        const sectionId = e.target.getAttribute("href").slice(1, e.target.getAttribute("href").length);
-        document.getElementById(sectionId).scrollIntoView({ behavior: "smooth" });
-    });
-});
+[...links].map(link => link.addEventListener("click", scrollToFunction));
 
 /**
  * End Main Functions
@@ -84,9 +86,3 @@ window.addEventListener("scroll", () => {
 
 // Build menu
 document.getElementById("burger").addEventListener("click", () => document.getElementById("navbar__list").classList.toggle("toggle-show"));
-
-// Scroll to section on link click
-
-// Set sections as active
-
-
