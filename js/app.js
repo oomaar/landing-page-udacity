@@ -38,7 +38,7 @@ const fragment = document.createDocumentFragment();
 */
 
 // build the nav
-const navBar = [...sections].map(section => {
+[...sections].map(section => {
     const navListItem = document.createElement('li');
     const navLink = document.createElement('a');
     const navList = document.getElementById('navbar__list');
@@ -50,10 +50,21 @@ const navBar = [...sections].map(section => {
     fragment.appendChild(navListItem);
     navList.append(fragment);
 });
-navBar();
 
 // Add class 'active' to section when near top of viewport
+window.addEventListener("scroll", () => {
+    const viewport = element => {
+        let bounding = element.getBoundingClientRect();
+        return (
+            bounding.top >= 0 &&
+            bounding.left >= 0 &&
+            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    };
 
+    [...sections].map(section => viewport(section) ? section.classList.add("your-active-class") : section.classList.remove("your-active-class"));
+});
 
 // Scroll to anchor ID using scrollTO event
 
