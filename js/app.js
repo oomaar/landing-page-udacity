@@ -22,15 +22,14 @@
  * Define Global Variables
  *
 */
-
+const sections = document.getElementsByTagName("section");
+const fragment = document.createDocumentFragment();
 
 /**
  * End Global Variables
  * Start Helper Functions
  *
 */
-
-
 
 /**
  * End Helper Functions
@@ -39,7 +38,19 @@
 */
 
 // build the nav
+const navBar = [...sections].map(section => {
+    const navListItem = document.createElement('li');
+    const navLink = document.createElement('a');
+    const navList = document.getElementById('navbar__list');
 
+    navLink.classList.add('menu__link');
+    navLink.innerText = section.id.charAt(0).toUpperCase() + section.id.slice(1, 7) + " " + section.id.slice(7, 8);
+    navLink.setAttribute("href", `#${section.id}`);
+    navListItem.appendChild(navLink);
+    fragment.appendChild(navListItem);
+    navList.append(fragment);
+});
+navBar();
 
 // Add class 'active' to section when near top of viewport
 
