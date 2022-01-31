@@ -45,8 +45,6 @@ const viewport = element => {
 const activeFunction = () => {
     [...sections].map(section => {
         [...links].map(link => {
-            // console.log(link.hash.slice(1, link.hash.length));
-            // console.log(section.id);
             if (viewport(section)) {
                 section.classList.add("your-active-class")
                 section.id === link.hash.slice(1, link.hash.length) ? (
@@ -80,7 +78,7 @@ const scrollToFunction = e => {
     const navList = document.getElementById('navbar__list');
 
     navLink.classList.add('menu__link');
-    navLink.innerText = section.id.charAt(0).toUpperCase() + section.id.slice(1, 7) + " " + section.id.slice(7, 8);
+    navLink.innerText = `${section.id.charAt(0).toUpperCase()}${section.id.slice(1, 7)} ${section.id.slice(7, 8)}`;
     navLink.setAttribute("href", `#${section.id}`);
     navListItem.appendChild(navLink);
     fragment.appendChild(navListItem);
@@ -100,4 +98,6 @@ window.addEventListener("scroll", activeFunction);
 */
 
 // Build menu
-document.getElementById("burger").addEventListener("click", () => document.getElementById("navbar__list").classList.toggle("toggle-show"));
+document.getElementById("burger").addEventListener("click", () => {
+    document.getElementById("navbar__list").classList.toggle("toggle-show")
+});
