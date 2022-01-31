@@ -32,18 +32,33 @@ const links = document.getElementsByTagName("a");
  *
 */
 
-const activeFunction = () => {
-    const viewport = element => {
-        let bounding = element.getBoundingClientRect();
-        return (
-            bounding.top >= 0 &&
-            bounding.left >= 0 &&
-            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    };
+const viewport = element => {
+    let bounding = element.getBoundingClientRect();
+    return (
+        bounding.top >= 0 &&
+        bounding.left >= 0 &&
+        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+};
 
-    [...sections].map(section => viewport(section) ? section.classList.add("your-active-class") : section.classList.remove("your-active-class"));
+const activeFunction = () => {
+    [...sections].map(section => {
+        [...links].map(link => {
+            // console.log(link.hash.slice(1, link.hash.length));
+            // console.log(section.id);
+            if (viewport(section)) {
+                section.classList.add("your-active-class")
+                section.id === link.hash.slice(1, link.hash.length) ? (
+                    link.classList.add("menu__link__active")
+                ) : (
+                    link.classList.remove("menu__link__active")
+                )
+            } else {
+                section.classList.remove("your-active-class")
+            };
+        })
+    });
 };
 
 const scrollToFunction = e => {
